@@ -6,7 +6,9 @@ A simple media app supporting basic user authentication and upload of media.
 
 Venv setup, eventually:
 Python 3.6.2
+
 Django	1.11.7	
+
 Pillow	4.3.0
 beautifulsoup4	4.6.0
 bottle	0.12.13
