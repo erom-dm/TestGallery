@@ -4,14 +4,18 @@ Intersog test task
 A simple media app supporting basic user authentication and upload of media.
 
 
-Venv setup, eventually:
+Venv setup, eventually
+
 Python 3.6.2
 
 Django	1.11.7	
 
 Pillow	4.3.0
+
 beautifulsoup4	4.6.0
+
 bottle	0.12.13
+
 bottle-session	0.8
 certifi	2017.11.5
 chardet	3.0.4
