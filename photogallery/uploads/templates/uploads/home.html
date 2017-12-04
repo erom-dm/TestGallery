@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+
+</head>
+<body>
+    {% block content %}
+
+    <br/>
+    <div class="container" align="center">
+        <h1>Home</h1>
+        <br/>
+        <br/>
+        <!-- cycle through all uploads objects -->
+        {% for post in posts.all %}
+        <a href="{% url 'uploads:post_detail' post.id %}">{{ post.title }}</a>
+        <br/>
+        <!-- check if file object is video -->
+        {% if post.vid_bool is True %}
+        <div>
+            <video width="480" height="340" controls>
+              <source src="{{ post.file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+        {% if post.vid_bool is False %}
+        <div>
+            <img src="{{ post.file.url }}" class="rounded" style="max-height:300px;">
+        </div>
+        {% endif %}
+        <br/>
+        {{ post.pub_date_pretty }} by <a href="{% url 'uploads:user_uploads' post.author.id %}">{{ post.author.username }}</a>
+        <br/>
+        <hr>
+        <br/>
+        {% endfor %}
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

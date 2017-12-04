@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% block content %}
+<h1>Log in</h1>
+
+<!-- displays an error if one of the conditions in accounts.views were met -->
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
+<!-- user info input -->
+<form method="POST" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+
+    {% if request.GET.net %}
+    <input type="hidden" name="next" value={{ request.GET.net }} />
+    {% endif %}
+
+
+    Username:
+    <br />
+    <input type="text" name="username" />
+    <br />
+    Password:
+    <br />
+    <input type="password" name="password" />
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Login"/>
+</form>
+{% endblock %}
+</body>
+</html>

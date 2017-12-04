@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Insta link</title>
+</head>
+<body>
+{% block content %}
+<h1>Create post</h1>
+
+<!-- displays an error if one of the conditions in accounts.views were met -->
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
+<!-- user info input -->
+<form method='POST' action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <div class="form-group">
+        <label for="UrlField">Instagram post URL</label>
+        <textarea class="form-control" id="UrlField" name="url" rows="1"></textarea>
+    </div>
+
+    <input class="btn btn-primary" type='submit' value='Upload'/>
+</form>
+{% endblock %}
+</body>
+</html>

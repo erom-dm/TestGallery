@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+  <head>
+    <title>Post {{ post.id  }}</title>
+  </head>
+  <body>
+    {% block content %}
+    <!-- Image and text -->
+    <br/>
+    <div class="container" align="center">
+
+        {% if post.author == user %}
+            <a href="{% url 'uploads:edit_post' post.id%}"><span style="padding-right: 10px;" class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+        {% endif %}
+        <a href="{% url 'uploads:post_detail' post.id %}">{{ post.title }}</a>
+        <br/>
+        {{ post.pub_date }} by <a href="{% url 'uploads:user_uploads' post.author.id %}">{{ post.author.username }}</a>
+        <br/>
+        <!-- check if file object is video -->
+        {% if post.vid_bool is True %}
+        <div>
+            <video width="720" height="480" controls>
+                <source src="{{ post.file.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+        {% if post.vid_bool is False %}
+        <div>
+            <img src="{{ post.file.url }}" class="rounded" style="max-height:700px;">
+        </div>
+        {% endif %}
+        <br/>
+        {{ post.description }}
+        <br/>
+
+    </div>
+  {% endblock %}
+  </body>
+</html>

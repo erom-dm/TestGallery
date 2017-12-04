@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+{% block content %}
+<h1>Sign up!</h1>
+
+<!-- displays an error if one of the conditions in accounts.views were met -->
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
+<!-- user info input -->
+<form method="POST" action="{% url 'accounts:signup' %}">
+    {% csrf_token %}
+    Username:
+    <br />
+    <input type="text" name="username" />
+    <br />
+    Password:
+    <br />
+    <input type="password" name="password1" />
+    <br />
+    Confirm password:
+    <br />
+    <input type="password" name="password2" />
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Sign up!"/>
+</form>
+{% endblock %}
+</body>
+</html>
