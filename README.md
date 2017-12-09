@@ -1,10 +1,9 @@
 # TestGallery
-Intersog test task
 
-A simple media app supporting basic user authentication and upload of media.
+A simple media app supporting basic user authentication, upload of both user's media files, and files linked via instagram post. 
 
 
-Venv setup, eventually:
+Venv setup, eventually (not everything used):
 
 Python 3.6.2
 Django	1.11.7	
